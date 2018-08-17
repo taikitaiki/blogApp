@@ -2,7 +2,7 @@ class BlogsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
 
   def index
-    @blogs = Blog.includes(:user).order("created_at DESC")
+    @blogs = Blog.all.includes(:user).order("created_at DESC")
   end
 
   def new
@@ -33,6 +33,7 @@ class BlogsController < ApplicationController
 
   def show
     @blog = Blog.find(params[:id])
+    @comments = @blog.comments.includes(:user)
   end
 
   private

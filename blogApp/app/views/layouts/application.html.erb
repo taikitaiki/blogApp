@@ -25,10 +25,10 @@
       <a href="/" class="brand-logo center">Blog App</a>
       <% if user_signed_in? %>
        <div class="user_nav grid-6">
-          <!-- <span><%= current_user.nickname %> -->
             <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><span><%= current_user.nickname %></span></li>
               <li><a class="post" href="/blogs/new">投稿する</a></li>
-              <li><a href="/users/<%= current_user.id%>"><%= @nickname %>マイページ</a></li>
+              <li><a href="/users/<%= current_user.id%>">マイページ</a></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method:  :delete %></li>
             </ul>
        </div>
