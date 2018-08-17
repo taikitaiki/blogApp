@@ -22,39 +22,32 @@
 
   <div class="contents row" >
     <% @blogs.each do |blog| %>
-        <div class = "more">
-
-          <div class="col s12 m7">
-        <!--     <h2 class="header">Horizontal Card</h2> -->
-            <div class="card horizontal">
+    <div class="content_post">
+      <div class="col s12 m7">
+          <div class="card horizontal">
               <div class="card-image">
-        <!--         <img src="https://lorempixel.com/100/190/nature/6"> -->
-              </div>
                 <div class="card-stacked">
                   <div class="card-content">
-                    <a href=/blogs/<%= blog.id %>"><span><%= blog.name %></span></a>
-                  </div>
-                    <div class="card-action">
-                      <ul class = "more_list">
-                        <li><%= link_to '[このブログを読む]', "/blogs/#{blog.id}", method: :get %></li>
-                         <li><a href="/users/<%= blog.user_id %>"><span>(投稿者)</span><%= blog.user.nickname %></a></li>
+                    <h5>「<%= blog.name %>」</h5>
+                       (投稿者)<%= blog.user.nickname %>
+                      <div class="card-action">
+                        <ul class = "more_list">
+                          <li><%= link_to '[このブログを読む]', "/blogs/#{blog.id}", method: :get %></li>
                           <% if user_signed_in? && current_user.id == blog.user_id %>
-                    <!--     <li><%= link_to '[編集]', "/blogs/#{blog.id}/edit", method: :get %></li>
-                        <li><%= link_to '[削除]', "/blogs/#{blog.id}", method: :delete %></li> -->
-
-                        <% end %>
-                      </ul>
-                    </div>
+                          <li><%= link_to '[編集]', "/blogs/#{blog.id}/edit", method: :get %>
+                          <%= link_to '[削除]', "/blogs/#{blog.id}", method: :delete %></li>
+                          <% end %>
+                        </ul>
+                      </div>
                   </div>
                 </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <% end %>
           </div>
         </div>
-
-<!--       <%= simple_format(blog.content) %>
-     <span class="name">
-
-     </span> -->
-<% end %>
-</div>
+  </div>
 </body>
 </html>
