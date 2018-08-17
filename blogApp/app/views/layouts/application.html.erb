@@ -22,13 +22,22 @@
 
   <nav class= "#ff9800 orange">
     <div class="nav-wrapper">
-      <a href="#" class="title">Blog App</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">ログイン</a></li>
-        <li><a href="badges.html">ログアウト</a></li>
-        <li><a href="collapsible.html">新規登録</a></li>
-      </ul>
-    </div>
+      <a href="/" class="brand-logo center">Blog App</a>
+      <% if user_signed_in? %>
+       <div class="user_nav grid-6">
+          <!-- <span><%= current_user.nickname %> -->
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a class="post" href="/blogs/new">投稿する</a></li>
+              <li><a href="/users/<%= current_user.id%>">マイページ</a></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method:  :delete %></li>
+            </ul>
+       </div>
+      <% else %>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+          <li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+        </ul>
+      <% end %>
   </nav>
 
 
@@ -39,7 +48,6 @@
 
 
 <%= yield %>
-
 
 
 <script type="text/javascript" src="./app.js"></script>

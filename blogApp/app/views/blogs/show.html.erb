@@ -1,6 +1,6 @@
 <div class ="contents row">
   <div class="content_post" >
-    <% if true %>
+    <% if user_signed_in? && current_user.id == @blog.user_id %>
       <div class="more">
         <span><%= image_tag 'arrow_top.png' %></span>
       <ul class="more_list">

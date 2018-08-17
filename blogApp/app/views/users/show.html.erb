@@ -1,9 +1,28 @@
 <div class="contents row" >
-  <p><%= @nickname %>さんの投稿一覧</p>
+  <h5><%= @nickname %>さんのブログ一覧</h5>
   <% @blogs.each do |blog| %>
     <div class="content_post">
-      <%= simple_format(blog.content) %>
-      <span class="name"><%= blog.name %></span>
+<!--       <%= simple_format(blog.content) %> -->
+      <div class="col s12 m7">
+        <!--     <h2 class="header">Horizontal Card</h2> -->
+            <div class="card horizontal">
+              <div class="card-image">
+        <!--         <img src="https://lorempixel.com/100/190/nature/6"> -->
+              </div>
+                <div class="card-stacked">
+                  <div class="card-content">
+                    <a href=/blogs/<%= blog.id %>"><span><%= blog.name %></span></a>
+                  </div>
+                    <div class="card-action">
+                      <ul class = "more_list">
+<!--                         <li><%= link_to '[詳細]', "/blogs/#{blog.id}", method: :get %></li> -->
+                        <li><%= link_to '[編集]', "/blogs/#{blog.id}/edit", method: :get %></li>
+                        <li><%= link_to '[削除]', "/blogs/#{blog.id}", method: :delete %></li>
+<!--                         <li><a href="/users/<%= blog.user_id %>"><span>(投稿者)</span><%= blog.user.nickname %></a></li> -->
+                      </ul>
+                    </div>
+                  </div>
+                </div>
     </div>
   <% end %>
 </div
