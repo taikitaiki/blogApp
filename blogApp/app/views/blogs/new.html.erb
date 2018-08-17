@@ -1,12 +1,16 @@
 <div class="contents row">
   <div class= "container">
-    <%= form_tag('/blogs', method: :post) do %>
-      <h4>
-        投稿する
-      </h4>
-      <input placeholder="blog title" type="text" name="name" autofocus="true">
-      <textarea placeholder="content" name="content" cols="30" rows="50"></textarea>
-      <input type="submit" value="投稿する">
+    <%= form_for @blog do |f| %>
+      <h5>投稿する</h5>
+        <%= f.text_field :name, placeholder: "ブログタイトル" %>
+
+        <%= f.text_area :content, placeholder: "本文", cols:"30", rows:"10" %>
+
+      <div class="actions">
+        <%= f.submit :"投稿する" %>
+      </div>
     <% end %>
+
+
   </div>
 </div>
