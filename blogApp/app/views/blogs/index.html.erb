@@ -30,22 +30,26 @@
                 <div class="card-stacked">
                   <div class="card-content">
                     <h5>「<%= blog.name %>」</h5>(投稿者)<%= blog.user.nickname %>
+                  </div>
                       <div class="card-action">
                         <ul class = "more_list">
                           <li><%= link_to '[このブログを読む]', "/blogs/#{blog.id}", method: :get %></li>
-                          <% if user_signed_in? && current_user.id == blog.user_id %>
-                          <li><%= link_to '[編集]', "/blogs/#{blog.id}/edit", method: :get %>
-                          <%= link_to '[削除]', "/blogs/#{blog.id}", method: :delete %></li>
+                         <% if user_signed_in? && current_user.id == blog.user_id %>
+                          <li><%= link_to '編集', "/blogs/#{blog.id}/edit", method: :get %>
+                          <%= link_to '削除', "/blogs/#{blog.id}", method: :delete %></li>
                           <% end %>
                         </ul>
                       </div>
-                  </div>
+
                 </div>
               </div>
           </div>
       </div>
     </div>
     <% end %>
+
   </div>
 
 </html>
+
+<%= paginate(@blogs) %>
