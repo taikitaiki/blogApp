@@ -1,10 +1,13 @@
 <div class="contents row">
-  <%= form_tag("/blogs/#{@blog.id}", method: :patch ) do %>
-    <h5>
-      編集する
-    </h5>
-    <input placeholder="title" type="text" name="name" value="<%= @blog.name %>" autofocus="true">
-    <textarea cols="30" name="content" placeholder="text" rows="10"><%= @blog.content%></textarea>
-    <input type="submit" value="完了">
-  <% end %>
+  <div class= "container">
+    <%= form_for @blog do |f| %>
+      <h5>編集する</h5>
+      <%= f.text_field :name, placeholder: "ブログタイトル" %>
+
+      <%= f.text_area :content, placeholder: "本文", cols:"30", rows:"10" %>
+        <div class="actions">
+          <%= f.submit :"完了" %>
+        </div>
+    <% end %>
+  </div>
 </div>
